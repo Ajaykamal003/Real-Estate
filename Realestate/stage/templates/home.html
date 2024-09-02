@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome to Real Estate{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Welcome to Real Estate</h1>
+    <p class="lead">Find your dream property or list your properties for sale.</p>
+    <hr class="my-4">
+    {% if user.is_authenticated %}
+        <p>You are logged in as {{ user.username }}.</p>
+        <a class="btn btn-primary btn-lg" href="{% url 'property_list' %}" role="button">View Properties</a>
+    {% else %}
+        <p>Please log in or register to access property listings.</p>
+        <a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Log In</a>
+        <a class="btn btn-secondary btn-lg" href="{% url 'register_buyer' %}" role="button">Register as Buyer</a>
+        <a class="btn btn-secondary btn-lg" href="{% url 'register_seller' %}" role="button">Register as Seller</a>
+    {% endif %}
+</div>
+{% endblock %}

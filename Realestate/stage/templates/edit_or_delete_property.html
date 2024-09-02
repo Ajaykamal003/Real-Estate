@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Edit or Delete Property</h2>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" name="edit">Update Property</button>
+</form>
+
+<h3>Delete Property</h3>
+<p>Are you sure you want to delete the property "{{ property.title }}"?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" name="delete">Confirm Delete</button>
+</form>
+
+<a href="{% url 'property_detail' property.pk %}">Cancel</a>
+{% endblock %}

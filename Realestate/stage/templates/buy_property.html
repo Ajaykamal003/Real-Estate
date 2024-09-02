@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Buy Property{% endblock %}
+
+{% block content %}
+<h1>Buy Property: {{ property.title }}</h1>
+{% if property.image %}
+    <img src="{{ property.image.url }}" alt="{{ property.title }}" class="img-fluid">
+{% endif %}
+<p><strong>Price:</strong> Rs {{ property.price }}</p>
+<p><strong>Location:</strong> {{ property.location }}</p>
+
+<form method="post">
+    {% csrf_token %}
+    <p>Are you sure you want to buy this property?</p>
+    <button type="submit" class="btn btn-success">Confirm Purchase</button>
+    <a href="{% url 'property_detail' property.pk %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

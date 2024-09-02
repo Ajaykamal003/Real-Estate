@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Purchase Confirmation{% endblock %}
+
+{% block content %}
+<h1>Purchase Confirmation</h1>
+<div class="alert alert-success">
+    Congratulations! You have successfully purchased {{ property.title }}.
+</div>
+<h2>Property Details:</h2>
+<p><strong>Title:</strong> {{ property.title }}</p>
+<p><strong>Price:</strong> Rs {{ property.price }}</p>
+<p><strong>Location:</strong> {{ property.location }}</p>
+<a href="{% url 'property_list' %}" class="btn btn-primary">Back to Listings</a>
+{% endblock %}
